@@ -10,10 +10,15 @@ export async function POST(request) {
     const id = formData.get("id");
 
     connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "portal",
+      host: "lapkapapakamysql-lapkapapaka1.f.aivencloud.com",
+      port: 22285,
+      user: "avnadmin",
+      password: "AVNS_5wiFNkFY8WVungXzcmn",
+      database: "defaultdb",
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      connectTimeout: 10000, // 10 seconds
     });
 
     const [result] = await connection.execute(

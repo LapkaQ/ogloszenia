@@ -6,12 +6,18 @@ export async function GET(request) {
   let connection;
   try {
     connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "portal",
+      host: "lapkapapakamysql-lapkapapaka1.f.aivencloud.com",
+      port: 22285,
+      user: "avnadmin",
+      password: "AVNS_5wiFNkFY8WVungXzcmn",
+      database: "defaultdb",
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      connectTimeout: 10000, // 10 seconds
     });
-    const [rows, fields] = await connection.execute("SELECT * FROM ogloszenia");
+
+    const [rows] = await connection.execute("SELECT * FROM ogloszenia");
 
     return new Response(JSON.stringify(rows), {
       status: 200,
@@ -20,7 +26,7 @@ export async function GET(request) {
       },
     });
   } catch (error) {
-    console.error(error);
+    console.error("Database connection failed:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
@@ -44,13 +50,17 @@ export async function POST(request) {
     const image = formData.get("image");
 
     connection = await mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "",
-      database: "portal",
+      host: "lapkapapakamysql-lapkapapaka1.f.aivencloud.com",
+      port: 22285,
+      user: "avnadmin",
+      password: "AVNS_5wiFNkFY8WVungXzcmn",
+      database: "defaultdb",
+      ssl: {
+        rejectUnauthorized: false,
+      },
+      connectTimeout: 10000, // 10 seconds
     });
 
-    // Insert the new record without image_url to get the assigned ID
     const [result] = await connection.execute(
       "INSERT INTO ogloszenia (title, description) VALUES (?, ?)",
       [title, description]
@@ -58,17 +68,14 @@ export async function POST(request) {
     const insertedId = result.insertId;
 
     if (image) {
-      // Use the ID to rename the image file
       const newImageName = `${insertedId}${path.extname(image.name)}`;
       const newImagePath = `/images/${newImageName}`;
 
-      // Update the record with the new image_url
       await connection.execute(
         "UPDATE ogloszenia SET image_url = ? WHERE id = ?",
         [newImagePath, insertedId]
       );
 
-      // Save the uploaded image to the public/images folder with the new name
       const imagePath = path.join(
         process.cwd(),
         "public",
@@ -89,7 +96,7 @@ export async function POST(request) {
       }
     );
   } catch (error) {
-    console.error(error);
+    console.error("Error during POST request:", error);
     return new Response(JSON.stringify({ error: "Internal Server Error" }), {
       status: 500,
       headers: {
