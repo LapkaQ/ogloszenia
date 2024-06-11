@@ -1,0 +1,61 @@
+/* .ogloszenie {
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 500px;
+  transition-duration: 0.1s;
+}
+.ogloszenie:hover {
+  background-color: rgb(27, 27, 27);
+  cursor: pointer;
+}
+.ogloszenie > .title {
+  font-size: 25px;
+}
+.ogloszenie > .description {
+  font-size: 20px;
+}
+.ogloszenie > .image {
+  border-radius: 20px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+} */
+
+.ogloszenieAdd {
+  border: 2px solid rgb(var(--card-border));
+  background: rgb(var(--card));
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(var(--card-border));
+}
+.inputOgloszenieAdd {
+  padding: 2px;
+  margin: 2px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+.inputOgloszenieAdd > input[type="text"],
+.inputOgloszenieAdd > textarea {
+  background-color: rgb(var(--background-rgb));
+  border: 2px solid rgb(var(--card-border));
+  color: white;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px rgb(var(--card-border));
+}
+.inputOgloszenieAdd > input[type="file"] {
+  color: white;
+}
+.submitOgloszenieAdd {
+  border: 2px solid rgb(var(--card-border));
+  background-color: rgb(var(--card2));
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  transition-duration: 0.1s;
+}
+.submitOgloszenieAdd:hover {
+  background: rgb(var(--card-border));
+}

@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-rgb: 0, 0, 0;
+  --background2-rgb: 78, 78, 78;
+  --text2-rgb: rgb(38, 34, 48);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 17, 8, 27;
+    --background2-rgb: 62, 57, 70;
+    --text2-rgb: 255, 255, 255;
+    --card: 38, 34, 48;
+    --card-border: 166, 136, 250;
+    --card2: 186, 159, 251;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+main {
+  flex-grow: 1;
+}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

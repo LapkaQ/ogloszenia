@@ -1,0 +1,41 @@
+.ogloszenieDelete {
+  width: 40%;
+  transition-duration: 0.1s;
+  border: 2px solid rgb(var(--card-border));
+  border-radius: 20px;
+  background: rgb(var(--card));
+  box-shadow: 0px 0px 5px rgb(var(--card-border));
+}
+.ogloszenieDelete > .imageDelete {
+  border-radius: 20px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+
+.ogloszenieDelete:hover {
+  /* background-color: rgb(27, 27, 27); 
+  cursor: pointer; */
+}
+.ogloszenieDelete > .title {
+  font-size: 25px;
+}
+.ogloszenieDelete > .description {
+  font-size: 20px;
+}
+.delteButton {
+  padding: 20px;
+  background: rgb(var(--card-border));
+  font-weight: 800;
+  font-size: 30px;
+  border-radius: 10px;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.1s;
+  cursor: pointer;
+}
+.delteButton:hover {
+  filter: saturate(50%);
+}
